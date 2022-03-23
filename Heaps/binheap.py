@@ -1,6 +1,7 @@
 from pprint import pprint
 from math import floor, log2
 
+
 class BinaryHeap:
     """
     Only need a list, and number of elements.
@@ -27,14 +28,19 @@ class BinaryHeap:
     def tostring(self):
         pprint(vars(self))
 
+    ##Simple Static methods
+
     #return index of parent element
-    def parent(self,i):
+    @staticmethod
+    def parent(i):
         return floor(i/2)
     #return index of left child.
-    def left(self,i):
+    @staticmethod
+    def left(i):
         return 2*i
     #return index of right child.
-    def right(self,i):
+    @staticmethod
+    def right(i):
         return (2*i+1)
 
     def getheapheight(self):
@@ -50,11 +56,11 @@ class BinaryHeap:
         l = self.left(i)
         r = self.right(i)
         largest = -1
-        if (l <= self.elemCount) and (self.eList[l] > A[i]):
+        if (l <= self.elemCount) and (self.eList[l] > self.eList[i]):
             largest = l
         else:
             largest = i
-        if (r <= self.elemCount) and (self.eList[r] > A[largest]):
+        if (r <= self.elemCount) and (self.eList[r] > self.eList[largest]):
             largest = r
         if (largest != i):
             #Exchange elements
@@ -64,12 +70,36 @@ class BinaryHeap:
             #Recursive Call again.
             maxheapify(i)
 
+    #This function will print out a tree representation of our
+    #Array. Is designed to work with small numbers, upto 32 elements
+    #and give a reasonable print out.
+    def printtree():
+        maxHeight = this.getheapheight()
+        spacing = "  "
+
+        #Deal with the root element. Its centering is based on maxHeight
+        print(spacing*maxHeight + str(this.eList[0]) + spacing*maxHeight)
+
+        #Iterate to next height level (from 1 to h...)
+        for (i = 1; i < maxHeight-1; i++):
+            linestring = ""
+            #string rep for all elements on a height level.
+            for (j = ((2**i)-1) ; j <= ((2**(i+1))-1); i++):
+                if (j > this.elemCount):
+                    break
+                linestring += str(this.eList[j]) + spacing*i
+            print(linestring)
+
+
+
 
     def heapify(self,i):
         if (self.heapType == "max"):
             self.maxheapify(i)
         else:
             self.minheapify(i)
+
+
 
 
 #    def minheapify(self,i):
@@ -82,7 +112,4 @@ if __name__ == "__main__":
 
     heap1.tostring()
 
-    heap1.heapify(4)
-    heap1.tostring()
-    heap1.heapify(3)
-    heap1.tostring()
+    heap1.heapify(2)
