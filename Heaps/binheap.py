@@ -1,6 +1,7 @@
 from pprint import pprint
-from math import floor, log2
-
+from math import floor, log2, ceil
+import pdb
+#pdb.set_trace() --- use to start debugging!
 
 class BinaryHeap:
     """
@@ -27,24 +28,46 @@ class BinaryHeap:
     """Wrapper code to examine our objects more easily"""
     def tostring(self):
         pprint(vars(self))
+        return
 
-    ##Simple Static methods
-
+    ##Simple Static methods:
     #return index of parent element
     @staticmethod
     def parent(i):
-        return floor(i/2)
+        return ceil((i/2) - 1)
     #return index of left child.
     @staticmethod
     def left(i):
-        return 2*i
+        return (2*i + 1)
     #return index of right child.
     @staticmethod
     def right(i):
-        return (2*i+1)
+        return (2*i+2)
 
     def getheapheight(self):
         return floor(log2(self.elemCount))
+
+    #This function will print out a tree representation of our
+    #array. Is designed to work with small numbers, upto 32 elements
+    #and give a reasonable print out.
+    def printtree(self):
+        maxHeight = self.getheapheight()
+        spacing = "  "
+
+        #Deal with the root element. Its centering is based on maxHeight
+        print(str(self.eList[0]))
+
+        #Iterate to next height level (from 1 to h...)
+        for i in range(1,maxHeight+1):
+            linestring = ""
+            #string rep for all elements on a height level.
+            for j in range((2**i)-1,2**(i+1)-1):
+                if (j >= self.elemCount):
+                    break
+                linestring += str(self.eList[j]) + spacing*(maxHeight+1-i)
+            print(linestring)
+        return
+
 
     """
     Core building block algorithm for checking if a subtree is a valid max-heap.
@@ -56,11 +79,11 @@ class BinaryHeap:
         l = self.left(i)
         r = self.right(i)
         largest = -1
-        if (l <= self.elemCount) and (self.eList[l] > self.eList[i]):
+        if (l < self.elemCount) and (self.eList[l] > self.eList[i]):
             largest = l
         else:
             largest = i
-        if (r <= self.elemCount) and (self.eList[r] > self.eList[largest]):
+        if (r < self.elemCount) and (self.eList[r] > self.eList[largest]):
             largest = r
         if (largest != i):
             #Exchange elements
@@ -68,30 +91,39 @@ class BinaryHeap:
             self.eList[i] = self.eList[largest]
             self.eList[largest] = hold
             #Recursive Call again.
-            maxheapify(i)
+            self.maxheapify(largest)
+        return
 
-    #This function will print out a tree representation of our
-    #Array. Is designed to work with small numbers, upto 32 elements
-    #and give a reasonable print out.
-    def printtree():
-        maxHeight = this.getheapheight()
-        spacing = "  "
+    '''
+    The...minheapify function.
 
-        #Deal with the root element. Its centering is based on maxHeight
-        print(spacing*maxHeight + str(this.eList[0]) + spacing*maxHeight)
+    Yes, we could have done operation overloading (< >) with more advanced
+    OOP coding techniques to reduce redundant code.
 
-        #Iterate to next height level (from 1 to h...)
-        for (i = 1; i < maxHeight-1; i++):
-            linestring = ""
-            #string rep for all elements on a height level.
-            for (j = ((2**i)-1) ; j <= ((2**(i+1))-1); i++):
-                if (j > this.elemCount):
-                    break
-                linestring += str(this.eList[j]) + spacing*i
-            print(linestring)
+    In truth, this is a toy example and I don't care enough that much about OOP.
+    '''
+    def minheapify(self,i):
+        l = self.left(i)
+        r = self.right(i)
+        smallest = -1
+        if (l < self.elemCount) and (self.eList[l] < self.eList[i]):
+            smallest = l
+        else:
+            smallest = i
+        if (r < self.elemCount) and (self.eList[r] < self.eList[smallest]):
+            smallest = r
+        if (smallest != i):
+            #Exchange elements
+            hold = self.eList[i]
+            self.eList[i] = self.eList[smallest]
+            self.eList[smallest] = hold
+            #Recursive Call again.
+            self.minheapify(smallest)
+        return
 
-
-
+    """
+    Selects based on the max/min property, and reroutes accordingly.
+    """
 
     def heapify(self,i):
         if (self.heapType == "max"):
@@ -99,17 +131,26 @@ class BinaryHeap:
         else:
             self.minheapify(i)
 
+    """
+    Takes a given array, and heapifies it. If new elements are inserted,
+    the full heap building must be run again.
+    """
+
+    def buildheap(self):
+        bound = (floor(self.elemCount/2) - 1)
+        for i in range(bound,-1,-1):
+            self.heapify(i)
 
 
-
-#    def minheapify(self,i):
-
-
-#Call our class
 if __name__ == "__main__":
     heap1 = BinaryHeap([1,2,3,4,5,6,7,8],"max")
-    heap2 = BinaryHeap([1,2,3,4,5,6,7,8], "min")
+    heap2 = BinaryHeap([1,2,3,4,5,6,7,8,9,10,11,12,13], "max")
+    heap3 = BinaryHeap([1,2,3], "max")
+    heap4 = BinaryHeap([1,2], "max")
+    heap5 = BinaryHeap([1],"max")
 
-    heap1.tostring()
-
-    heap1.heapify(2)
+    heap6 = BinaryHeap([8,7,6,5,4,3,2,1],"min")
+    heap7 = BinaryHeap([13,12,11,10,9,8,7,6,5,4,3,2,1], "min")
+    heap8 = BinaryHeap([3,2,1], "min")
+    heap9 = BinaryHeap([2,1], "min")
+    heap10 = BinaryHeap([1],"min")
