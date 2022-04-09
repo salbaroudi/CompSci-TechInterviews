@@ -38,9 +38,9 @@ var tailsum = function(n) {
 }
 
 //Equivalent Tail Recursive form:
-let fibTR = function (n,a,b) {
-  if (n==0) {return a;}
-  if (n==0) {return b;}
+let fibonacci= function (n,a,b) {
+  if (n==0) {return a;} //just returns zero.
+  if (n==1) {return b;} //actual base case
 
   return fibTR(n-1,b,a+b);
 }

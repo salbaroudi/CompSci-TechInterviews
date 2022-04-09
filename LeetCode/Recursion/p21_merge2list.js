@@ -34,6 +34,9 @@ Some Learning Points:
 - I naively assumed that Arrays would be fine - trying to convert my solution to use LinkedList resulted in a mess of code.
 - Without an atom testbed to interact with LinkedList, I had trouble conceptualizing what I needed to do.
 - The code below is much omre efficient than my code above - I had Tail Recursion on the brain from a previous problem and so this problem was just another nail...
+
+Understanding this code:
+
 */
 
 var mergeTwoLists = function(l1, l2) {
@@ -50,4 +53,4 @@ var mergeTwoLists = function(l1, l2) {
     }
 };
 
-//Using the JS LinkedList, 
+//Using the JS LinkedList,
