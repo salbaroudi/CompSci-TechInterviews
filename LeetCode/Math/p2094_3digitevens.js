@@ -36,6 +36,7 @@ var findEvenNumbers = function(digits) {
     return validNums;
 }
 
+
 /*Corner Cases Check
 - Zero digits - OK
 - One digits - OK
