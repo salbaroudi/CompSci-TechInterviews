@@ -21,6 +21,7 @@ var findContentChildren = function(g, s) {
 
     let start = 0;let cCount = 0;let i = 0;
 
+    //Run time for this loop is O(n^2) at worst, if we have perfect 1-1 matching.
     while ((i < s.length)&&(start<g.length)) {
         for (let j = start; j< g.length; j++) {
             start = j;
