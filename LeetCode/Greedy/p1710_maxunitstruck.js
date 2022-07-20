@@ -1,24 +1,5 @@
 var maximumUnits = function(boxTypes, truckSize) {
     boxTypes.sort((a,b) => b[1] - a[1]);
-
-    let tSum = 0; let i = 0
-    while ((truckSize > 0) && (i < boxTypes.length)) {
-        let mult = Math.min(truckSize,boxTypes[i][0])
-        if (truckSize >= boxTypes[i][0]) {
-            truckSize-=boxTypes[i][0]
-            tSum+=boxTypes[i][1]*boxTypes[i][0];
-        }
-        else {
-            tSum+=boxTypes[i][1]*truckSize;
-            break;
-        }
-        i+=1;
-    }
-    return tSum;
-};
-
-var maximumUnits = function(boxTypes, truckSize) {
-    boxTypes.sort((a,b) => b[1] - a[1]);
     let tSum = 0; let i = 0; let nUnits = 0;
     while ((truckSize > 0) && (i < boxTypes.length)) {
         nUnits = Math.min(truckSize,boxTypes[i][0]);
@@ -42,12 +23,24 @@ var maximumUnits = function(boxTypes, truckSize) {
 
 
 Test Cases:
-
+[[1,1]]
+1
+[[1,1],[1,1]]
+1
+[[1,1],[1,1]]
+2
+[[1,1],[1,1]]
+8
+[[1,1],[1,1],[1,1],[1,1],[1,1],[1,1]]
+1000
 [[1,3],[2,2],[3,1]]
 4
 [[5,10],[2,5],[4,7],[3,9]]
 10
-
-
-
+[[1,15],[1,2],[8,4],[14,13],[11,122],[9,1]]
+1000
+[[1,15],[1,2],[8,4],[14,13],[11,122],[9,1],[1,2],[3,4],[5,6],[7,8],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1]]
+1000
+[[1,15],[1,2],[8,4],[14,13],[11,122],[9,1],[1,2],[3,4],[5,6],[7,8],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1]]
+30
 */
