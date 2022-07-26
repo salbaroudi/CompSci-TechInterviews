@@ -7,7 +7,6 @@
 //For some reason, FactoryUI has to be at the top of the file to run. Annoying.
 public class FactoryUI {
     private static Dialog dialog;
-
     public static void configure() {
         if (System.getProperty("os.name").equals("Windows 10")) {
             dialog = new WindowsDialog();
