@@ -17,10 +17,8 @@ public class LogisticsDemo {
         todaysList.addOrder(new CustomerRecord("Zachary","101112 Drive",100));
         todaysList.addOrder(new CustomerRecord("Igor","131415 Lane",100));
 
-        System.out.println("1");
         //Now lets traverse our order, and print it out.
         Iterator OI = todaysList.createLogisticsIterator();
-        System.out.println(OI.hasMoreLabels());
         while(OI.hasMoreLabels()) {
             System.out.println("Label: " + OI.nextShippingLabel());
         }
@@ -48,13 +46,16 @@ class OrderIterator implements Iterator {
     }
 
     public boolean hasMoreLabels() {
-        System.out.println("currIndex = " + currIndex + ", limit = " + limit);
         return (currIndex < limit);
     }
 
     public String nextShippingLabel() {
         String name = orders.get(currIndex).customerName;
         String address = orders.get(currIndex).address;
+        //If we attempt to access cost, we get a private error thrown.
+        //This assumes that an attacker cannot alter the Customer Record (presumaly in a compiled app
+        //somwhere...)
+        //System.out.println(orders.get(currIndex).cost);
         currIndex+=1;
         return (name + "," + address);
     }

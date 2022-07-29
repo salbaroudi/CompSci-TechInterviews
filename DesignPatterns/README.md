@@ -6,7 +6,7 @@
 with a given object of a class.
 - **Concrete Class:** A non-abstract, regular class.
 -**Class**: A block of code that defines an object's interface and implementation of the given interface methods.
--**Abstract Class:** A special class that includes the interface only. It's implementation is handled by sub-classes.
+-**Abstract Class:** A special class that can be a mix between an interface and concrete class. Its provides finer control of abstraction (between classes and interfaces).
 - **Inheritance:** The creation of a class (child or sub-class), from another parent class. In addition to inheriting the interface, and implemented methods (if parent is concrete)
 - ** Object:** Run-time entity that packages data, as well as structured methods that act on the data.
 - ** Instance (of a class):** An object created by the constructor of the class. Specific data is stored in the data object, and all implemented methods from the class can be applied to the object itself.
@@ -14,7 +14,21 @@ with a given object of a class.
 - **Coupling:** When two classes are dependent on each other in some way.
 - **Polymorphism:** The ability to substitute objects of matching interface, for one another at run-time. Polymorphism is used to reduce code footprint and increase code re-usability, generally.
 - **Sub-Class:** A child class that formally inherits all fields and methods from a parent class.
--
+- **Abstraction:** The process of hiding implementation details from a client, and providing a signature for them to call.
+
+### Basic OOP Design Principles (SOLID):
+
+1) *Single-Responsibility Principle:* Every class should have one main responsibility.
+
+2) *Open-Closed Principle:* Software entities should allow their code to be extended, but should not 
+allow their source code to be modified.
+
+3) *Liskov Substitution Prinicple:*  Functions that point to super-classes, must be able to use sub-classes without knowing it.
+
+4) *Interface-Segregation Principle:*  No code should depend on methods it does not use. Interfaces are made small and plentiful, to help clients avoid this.
+
+5) *Dependency Inversion Prinicple:* Clients should depend on abstractions, and not concretions. We design our code based on interface and abstract class signatures whenever possible, instead of concrete classes.
+
 
 ### Purpose:
 This project folder serves to document and implement common design patterns
