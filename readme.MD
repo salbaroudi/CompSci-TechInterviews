@@ -1,19 +1,24 @@
 
-
 ## Code Interview Practice:
 
-This folder contains demonstrable proof of my understanding of the core topics in Computer Science.
+This folder contains demsonstrable proof of my understanding of the core topics in Computer Science and Software Development.
 
-Algorithms will be coded by hand and tested in JavaScript or Python, with a short write-up for each.
+It contains the following folders:
 
-OneCompiler is used to give a live demonstration of the code - links will be provided for each.
+- Algorithms & Data Structures: Will be coded by hand and tested in JavaScript or Python, with a short write-up for each.
+- Leet Code: Copies of my solutions to solved Leet Code problems.
+- Books: Software Development book summaries.
+- Notes: Notes from tech deep-dives, or Coursera/Udemy courses I have completed.
+
+
 
 **Note:** I implement these algorithms from scratch, with the goal of remembering/understanding
 them and getting them working at an **reasonably effective** level.
 
-I make no claim that my implementations are optimized, or the most efficient. Use a software
-library if you want this level of guarantee.   
 
 ### Ethos of this Code Project:
-
 > "The only way to learn Physics is to do it." - J.J Sakurai
+
+### Summary of Projects:
+
+For a selection of Software and Data Science projects I have worked on, see my [Personal Summary](http://cumulativeparadigms.com/).
